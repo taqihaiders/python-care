@@ -22,10 +22,10 @@ COPY . .
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
 
-# Expose the LiveKit WebSocket port (default is 7880)
+# Expose the LiveKit WebSocket port
 EXPOSE 7880
 
-# Set environment variables (these should be overridden at runtime)
+# Set environment variables
 ENV LIVEKIT_URL=""
 ENV LIVEKIT_API_KEY=""
 ENV LIVEKIT_API_SECRET=""
@@ -34,9 +34,8 @@ ENV DEEPGRAM_API_KEY=""
 ENV CARTESIA_API_KEY=""
 ENV CARE_MANAGEMENT_BASE_URL=""
 ENV CARE_MANAGEMENT_AUTH_TOKEN=""
-ENV HOST="0.0.0.0"  # Allow external connections
-ENV PORT="7880"     # Match the exposed port
+ENV HOST="0.0.0.0"
+ENV PORT="7880"
 
 # Command to run the application
-# Default to production mode, can be overridden at runtime
 CMD ["python", "-m", "voice_agent", "start"] 
